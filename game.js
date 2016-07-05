@@ -2,7 +2,21 @@
 
 var Player = require("./player.js");
 var prompt = require('prompt-sync')();
+var colors = require('colors');
 const endPatt = new RegExp("quit");
+
+colors.setTheme({
+  silly: 'rainbow',
+  input: 'grey',
+  verbose: 'cyan',
+  prompt: 'grey',
+  info: 'green',
+  data: 'grey',
+  help: 'cyan',
+  warn: 'yellow',
+  debug: 'blue',
+  error: 'red'
+});
 
 class Game {
   constructor(initial_money) {
@@ -71,9 +85,9 @@ class Game {
   }
 
   logStatus(turnNum, prize) {
-    console.log("The number is...");
-    console.log(turnNum + " !!!");
-    console.log("In this turn, the outcome is " + prize);
+    console.log("The number is...".verbose);
+    console.log(("\t" + turnNum + " !").silly);
+    console.log(("In this turn, the outcome is " + prize).yellow);
   }
 
   turn() {
